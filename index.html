@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Campus Lunch</title>
+  <!-- Relative asset path for local viewing and GitHub Pages under /campus-lunch/ -->
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <div class="top-nav">
+    <div class="top-nav-inner">
+      <span class="preview-title">Layout Preview:</span>
+      <div class="view-toggle-group" role="group" aria-label="Device layout preview switcher">
+        <button type="button" id="btn-laptop-view" class="toggle-btn active" aria-pressed="true">
+          💻 Laptop
+        </button>
+        <button type="button" id="btn-phone-view" class="toggle-btn" aria-pressed="false">
+          📱 Phone (390px)
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div id="page-container" class="page-container view-laptop">
+    <header class="header">
+      <h1 class="page-title">Campus Lunch</h1>
+      <p class="page-subtitle">Daily Cafeteria Menu</p>
+    </header>
+
+    <main id="main-content">
+      <section aria-labelledby="filter-heading" class="controls-section">
+        <h2 id="filter-heading" class="visually-hidden">Filter Options</h2>
+        <div class="control-group">
+          <label for="day-select" class="control-label">Select Day:</label>
+          <select id="day-select" class="day-select" name="day">
+            <option value="Monday" selected>Monday</option>
+            <option value="Tuesday">Tuesday</option>
+            <option value="Wednesday">Wednesday</option>
+          </select>
+        </div>
+        <p id="meal-count" class="meal-count" aria-live="polite" aria-atomic="true">3 meals available</p>
+      </section>
+
+      <section aria-labelledby="menu-heading">
+        <h2 id="menu-heading" class="visually-hidden">Meal Cards</h2>
+        <div id="meal-list" class="meal-list" role="region" aria-label="Meals list">
+          <!-- Meal cards rendered dynamically by app.js -->
+        </div>
+        <p id="empty-message" class="empty-message" hidden>No meals available for this selection.</p>
+      </section>
+    </main>
+  </div>
+
+  <!-- Relative asset path for local viewing and GitHub Pages under /campus-lunch/ -->
+  <script src="./app.js"></script>
+</body>
+</html>

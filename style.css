@@ -1,0 +1,319 @@
+/* Base reset and box-sizing */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Document styling: white background, black text */
+body {
+  background-color: #ffffff;
+  color: #000000;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Top utility bar for Phone/Laptop preview switcher */
+.top-nav {
+  background-color: #ffffff;
+  border-bottom: 1px solid #e5e7eb;
+  padding: 12px 20px;
+}
+
+.top-nav-inner {
+  max-width: 1040px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.preview-title {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #4b5563;
+}
+
+.view-toggle-group {
+  display: inline-flex;
+  background-color: #f3f4f6;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  padding: 3px;
+  gap: 2px;
+}
+
+.toggle-btn {
+  background: transparent;
+  border: none;
+  font-family: inherit;
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 6px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  color: #4b5563;
+  transition: all 0.15s ease;
+}
+
+.toggle-btn:hover {
+  color: #000000;
+}
+
+.toggle-btn.active {
+  background-color: #ffffff;
+  color: #000000;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.toggle-btn:focus-visible {
+  outline: 2px solid #000000;
+  outline-offset: 2px;
+}
+
+/* Page container */
+.page-container {
+  width: 100%;
+  margin: 0 auto;
+  transition: max-width 0.25s ease, padding 0.25s ease;
+}
+
+/* Laptop / Desktop Layout (Default on wide screens) */
+.page-container.view-laptop {
+  max-width: 1040px;
+  padding: 40px 24px 64px;
+}
+
+.page-container.view-laptop .controls-section {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 16px;
+  margin-bottom: 32px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.page-container.view-laptop .control-group {
+  width: 260px;
+}
+
+.page-container.view-laptop .meal-list {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+}
+
+/* Phone Layout Simulation (390px width) */
+.page-container.view-phone {
+  max-width: 390px;
+  padding: 24px 16px 40px;
+  border-left: 1px solid #e5e7eb;
+  border-right: 1px solid #e5e7eb;
+  min-height: 80vh;
+}
+
+.page-container.view-phone .controls-section {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.page-container.view-phone .control-group {
+  width: 100%;
+}
+
+.page-container.view-phone .meal-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Header section */
+.header {
+  margin-bottom: 24px;
+}
+
+.page-title {
+  font-size: 2.25rem;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  margin-bottom: 6px;
+}
+
+.page-subtitle {
+  font-size: 1.125rem;
+  color: #4b5563;
+}
+
+/* Control elements */
+.control-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.control-label {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #000000;
+}
+
+.day-select {
+  appearance: none;
+  -webkit-appearance: none;
+  background-color: #ffffff;
+  color: #000000;
+  font-size: 1rem;
+  font-family: inherit;
+  padding: 10px 14px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  cursor: pointer;
+  width: 100%;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%2020%2020%27%20fill%3D%27none%27%20stroke%3D%27%23111111%27%20stroke-width%3D%272%27%20stroke-linecap%3D%27round%27%20stroke-linejoin%3D%27round%27%3E%3Cpolyline%20points%3D%276%209%2012%2015%2018%209%27%2F%3E%3C%2Fsvg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 16px;
+  padding-right: 36px;
+}
+
+.day-select:focus-visible {
+  outline: 2px solid #000000;
+  outline-offset: 2px;
+}
+
+.meal-count {
+  font-size: 0.95rem;
+  color: #4b5563;
+  font-weight: 500;
+}
+
+/* Screen reader utility */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* Thin gray meal cards */
+.meal-card {
+  background-color: #ffffff;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 16px;
+  min-height: 190px;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.meal-card:hover {
+  border-color: #9ca3af;
+}
+
+.meal-card:focus-visible {
+  outline: 2px solid #000000;
+  outline-offset: 3px;
+}
+
+.meal-card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.meal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.meal-name {
+  font-size: 1.25rem;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+/* Dietary badge */
+.badge-vegetarian {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: 9999px;
+  border: 1px solid #767676;
+  background-color: #f9f9f9;
+  color: #000000;
+  white-space: nowrap;
+}
+
+/* Description styling */
+.meal-description {
+  font-size: 0.95rem;
+  color: #374151;
+  line-height: 1.5;
+}
+
+/* Price in KRW */
+.meal-price {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #000000;
+  padding-top: 10px;
+  border-top: 1px solid #f3f4f6;
+}
+
+/* Empty message */
+.empty-message {
+  text-align: center;
+  color: #6b7280;
+  font-size: 1rem;
+  padding: 48px 16px;
+  border: 1px dashed #d1d5db;
+  border-radius: 8px;
+}
+
+/* Responsive fallback on actual mobile screens */
+@media (max-width: 768px) {
+  .page-container.view-laptop {
+    padding: 24px 16px 40px;
+  }
+
+  .page-container.view-laptop .controls-section {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .page-container.view-laptop .control-group {
+    width: 100%;
+  }
+
+  .page-container.view-laptop .meal-list {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .page-title {
+    font-size: 1.85rem;
+  }
+}
